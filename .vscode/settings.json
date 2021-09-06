@@ -1,0 +1,6 @@
+{
+    "java.project.sourcePaths": [
+        "module_1/HelloWorldApp",
+        "module_1/FanApp"
+    ]
+}
