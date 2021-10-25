@@ -8,7 +8,7 @@ Additional modifications by T. Sathish 2021
 Payne, D. (2021). CSD 405 Intermediate Java Programming. Bellevue University.
 Modified by A. Sateesh 2021
 */
-package TalluriFutureValueApp.src;
+package TalluriEnhanceFutureValueApp.src;
 
 
 import java.text.SimpleDateFormat;
