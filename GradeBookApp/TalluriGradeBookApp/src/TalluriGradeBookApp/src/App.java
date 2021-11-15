@@ -12,35 +12,30 @@ package TalluriGradeBookApp.src;
 
 
 import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
 import java.io.FileWriter;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.io.IOException;
+import java.util.List;
 
 import com.opencsv.CSVWriter;
+import com.opencsv.bean.CsvToBeanBuilder;
 
 import javafx.application.Application;
-import javafx.collections.FXCollections;
-import javafx.collections.ObservableList;
-import javafx.scene.Node;
-import javafx.scene.Scene;
-import javafx.scene.control.TextField;
-import javafx.scene.input.DataFormat;
-import javafx.scene.control.Button;
-import javafx.scene.control.ChoiceBox;
-import javafx.scene.control.ComboBox;
-import javafx.scene.control.Label;
-import javafx.scene.control.MenuButton;
-import javafx.scene.control.TextArea;
-import javafx.scene.layout.GridPane;
-import javafx.scene.layout.HBox;
-import javafx.scene.paint.Color;
-import javafx.scene.text.Text;
-import javafx.geometry.Pos;
 import javafx.geometry.HPos;
 import javafx.geometry.Insets;
+import javafx.geometry.Pos;
+import javafx.scene.Scene;
+import javafx.scene.control.Button;
+import javafx.scene.control.ChoiceBox;
+import javafx.scene.control.Label;
+import javafx.scene.control.TextField;
+import javafx.scene.layout.GridPane;
 import javafx.stage.Stage;
 
-public class App extends Application {	
+public class App extends Application {
+    StudentCSV writer = new StudentCSV();
+    File studentDataFile=new File("D:\\Student\\Student.csv");	
     public static void main(String[] args) {
         launch(args);
     }
@@ -51,8 +46,6 @@ public class App extends Application {
         	private Button btSave = new Button("Save");
             private Button btClear = new Button("Clear");
             private Button btview = new Button("View");
-            
-            //final ComboBox<String> comboBox = new ComboBox<String>();
              ChoiceBox<String> garadeChoiceBox = new ChoiceBox<String>();
 
     @Override
@@ -76,9 +69,6 @@ public class App extends Application {
         pane.add(btSave, 0, 4);
         pane.add(btClear, 1, 4);
         pane.add(btview, 2, 4);
-    
-
-
         //Set UI properties		
         pane.setAlignment(Pos.CENTER);		
         tfFirstName.setAlignment(Pos.BOTTOM_RIGHT);		
@@ -92,25 +82,70 @@ public class App extends Application {
             tfFirstName.setText("");
             tfLastName.setText("");
             tfCourse.setText("");
+            garadeChoiceBox.setValue("");
         });
-        // Process events		
-
+        btview.setOnAction(e -> {
+            try {
+                viewstudentDetails();
+            } catch (Exception e1) {
+                // TODO Auto-generated catch block
+                e1.printStackTrace();
+            } 
+        });
         Scene scene=new Scene(pane,300,300);  
         primaryStage.setScene(scene);  
         primaryStage.setTitle(" Grade Book App");  
         primaryStage.show();  
        }
-       private void studentDetails() {		
+       private void studentDetails() {	
+        Student student=new Student();
+                student.setFirstName(tfFirstName.getText());
+                student.setLastName(tfLastName.getText()); 
+                student.setCourse(tfCourse.getText());
+                student.setGrade(garadeChoiceBox.getValue());
+                //Boolean flag= studentDataFile.exists();
+        try {
+            if(studentDataFile.createNewFile())
+            {
+                studentDataCoversion(student);
+}
+           else{  
+            CSVWriter writer = new CSVWriter(new FileWriter(studentDataFile, true));
+            String [] record = {tfFirstName.getText(),tfLastName.getText(),tfCourse.getText(),garadeChoiceBox.getValue()};
+            writer.writeNext(record);
+            writer.close();
+             }
+            } catch (Exception e) {
 
-        String firstName = tfFirstName.getText();			
-        String lastName = tfLastName.getText();
-        String course =tfCourse.getText() ;		
-        String grade=garadeChoiceBox.getValue();
+            e.printStackTrace();
+        }
 
 
-    
+        	
+}
+private void viewstudentDetails() throws IOException,FileNotFoundException {
+    System.out.println("in viewstudentDetails");
+    FileReader obj=new FileReader(studentDataFile);
+    List<Student> beans = new CsvToBeanBuilder(obj)
+    .withType(Student.class)
+    .build()
+    .parse();
 
-    }
+beans.forEach(System.out::println);
+   
+
+}
+public void studentDataCoversion(Student student)
+{
+    List<String[]> data=writer.createCsvDataSpecial(student);
+                try {
+                    writer.writeToCsvFile(data, studentDataFile);
+                } catch (IOException e) {
+                    // TODO Auto-generated catch block
+                    e.printStackTrace();
+                }
+
+}
     
     
 

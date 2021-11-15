@@ -1,9 +1,15 @@
 package TalluriGradeBookApp.src;
 
+import com.opencsv.bean.CsvBindByName;
+
 public class Student {
+    @CsvBindByName(column = "First Name")
     private String firstName;
+    @CsvBindByName(column = "Last Name")
     private String lastName;
+    @CsvBindByName(column = "Course")
     private String course;
+    @CsvBindByName(column = "Grade")
     private String grade;
 
     public Student( String firstName, String lastName, String course,String grade) {
@@ -12,6 +18,8 @@ public class Student {
         this.lastName = lastName;
         this.course = course;
         this.grade = grade;
+    }
+    public Student() {
     }
     /*
     /**
