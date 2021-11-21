@@ -1,6 +1,35 @@
 {
     "java.project.sourcePaths": [
+        "module_3",
+        "module_2/SportsTeamApp",
+        "module_2/JarPracticeFiles",
         "module_1/HelloWorldApp",
-        "module_1/FanApp"
+        "module_1/FanApp",
+        "Module_6",
+        "Module_5",
+        "Module_4",
+        "GradeBookApp/TalluriGradeBookApp/src",
+        "FutureValueApp",
+        "Test_Module"
+    ],
+    "java.project.referencedLibraries": [
+        "lib/**/*.jar",
+        "c:\\Users\\sdond\\Downloads\\javafx-sdk-11.0.1\\lib\\javafx.base.jar",
+        "c:\\Users\\sdond\\Downloads\\javafx-sdk-11.0.1\\lib\\javafx.controls.jar",
+        "c:\\Users\\sdond\\Downloads\\javafx-sdk-11.0.1\\lib\\javafx.fxml.jar",
+        "c:\\Users\\sdond\\Downloads\\javafx-sdk-11.0.1\\lib\\javafx.graphics.jar",
+        "c:\\Users\\sdond\\Downloads\\javafx-sdk-11.0.1\\lib\\javafx.media.jar",
+        "c:\\Users\\sdond\\Downloads\\javafx-sdk-11.0.1\\lib\\javafx.swing.jar",
+        "c:\\Users\\sdond\\Downloads\\javafx-sdk-11.0.1\\lib\\javafx.web.jar",
+        "c:\\Users\\sdond\\Downloads\\javafx-sdk-11.0.1\\lib\\javafx-swt.jar",
+        "c:\\Users\\sdond\\Downloads\\opencsv-5.5.2.jar",
+        "c:\\Users\\sdond\\Downloads\\poi-5.1.0.jar",
+        "c:\\Users\\sdond\\Downloads\\poi-ooxml-5.1.0.jar",
+        "c:\\Users\\sdond\\Downloads\\commons-collections4-4.4.jar",
+        "c:\\Users\\sdond\\Downloads\\commons-text-1.9.jar",
+        "c:\\Users\\sdond\\Downloads\\commons-lang3-3.12.0.jar",
+        "c:\\Users\\sdond\\Downloads\\commons-beanutils-1.9.4.jar",
+        "c:\\Users\\sdond\\Downloads\\commons-collections-3.2.2.jar",
+        "c:\\Users\\sdond\\Downloads\\commons-logging-1.2.jar"
     ]
 }

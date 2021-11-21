@@ -9,7 +9,6 @@ Modified by A. Sateesh 2021
 */
 import java.util.Scanner;
 
-import javax.lang.model.util.ElementScanner14;
 /**
  * Design a class named TestCustomerAccountApp 
  */

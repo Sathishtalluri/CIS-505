@@ -24,7 +24,7 @@ public class TalluriHelloWorld
     String firstName="Sathish";
     String lastName="Talluri";
     /**
-     * command to print declared variables with values in cosole
+     * command to print declared variables values in cosole
      */
     System.out.println("Hello world from "+firstName+" "+lastName);
 
